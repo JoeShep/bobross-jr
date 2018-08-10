@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>About Us</title>
+  {% load staticfiles %}
+</head>
+
+<body>
+  <p>
+    We are a group of Django enthusiasts with the following idiosyncrasies:
+
+    <ol>
+      <li>We only eat bananas on Saturdays.</li>
+      <li>We love making playing football on rainy days.</li>
+    </ol>
+  </p>
+  <a href="{% url 'home' %}">Go Home</a>
+  <a href="{% url 'about' %}">About This Site</a>
+
+  <button id="do-nuttin">Click Me!</button>
+  <button id="go-django">Fetch Stuff with Django!</button>
+
+<script src="{% static 'js/index.js' %}"></script>
+</body>
+
+</html>
