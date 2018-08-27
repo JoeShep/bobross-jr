@@ -1,9 +1,39 @@
 # from django.shortcuts import render
+# For class-based stuff
 from django.views.generic import View, TemplateView, ListView
-from django.http import JsonResponse
 from braces import views
+
+# for function-based stuff
+from django.shortcuts import get_object_or_404, render
+
+# for both
+from django.http import JsonResponse
 from .models import Movie
 
+# function-based version
+def index(request):
+  return render(request, 'movie_tracker/index.html')
+
+def movies(request):
+  return render(request, 'movie_tracker/movies.html')
+
+def movie_data(request):
+  movies = Movie.objects.all().values() #values can take args of the fields you want to send back
+  movies_list = list(movies)  # convert the QuerySet to a list object
+  return JsonResponse(movies_list, safe=False) #safe=False needed because not sending back a dict. (need to look into this)
+
+
+
+
+
+
+
+
+
+
+
+
+# class-based version
 class HomePageView(TemplateView):
     template_name = "index.html"
 
