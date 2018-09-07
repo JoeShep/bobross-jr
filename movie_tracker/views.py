@@ -1,4 +1,4 @@
-# from django.shortcuts import render
+from django.shortcuts import render_to_response
 # For class-based stuff
 from django.views.generic import View, TemplateView, ListView
 from braces import views
@@ -22,7 +22,8 @@ def movie_data(request):
   movies_list = list(movies)  # convert the QuerySet to a list object
   return JsonResponse(movies_list, safe=False) #safe=False needed because not sending back a dict. (need to look into this)
 
-
+def boring(request):
+  return render(request, 'movie_tracker/boring.html')
 
 
 
